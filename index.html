@@ -13,9 +13,19 @@
     <div id="app"></div>
     <script type="module">
       import '@nkzw/remdx/style.css';
-      import { render } from './render';
+      import { render } from '@nkzw/remdx';
+      import Container from './Container';
 
-      render(document.getElementById('app'), import('./slides.re.mdx'));
+      render(
+        document.getElementById('app'),
+        (async () => {
+          const slides = await import('./slides.re.mdx');
+          return {
+            Container,
+            ...slides,
+          };
+        })(),
+      );
     </script>
   </body>
 </html>
