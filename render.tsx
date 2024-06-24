@@ -1,63 +1,8 @@
-import { MDXProvider } from '@mdx-js/react';
-import { Deck, Slide } from '@nkzw/remdx/index.js';
-import { ReMDXModule, SlideTransition } from '@nkzw/remdx/types.jsx';
+import { Deck, MDXProvider, Slide, Transitions } from '@nkzw/remdx/index.js';
+import { ReMDXModule } from '@nkzw/remdx/types.jsx';
 import { createRoot, Root } from 'react-dom/client';
 
-const defaultTransition = {
-  enter: {
-    opacity: 1,
-    transform: 'translateX(0%)',
-  },
-  from: {
-    opacity: 0,
-    transform: 'translateX(100%)',
-  },
-  leave: {
-    opacity: 1,
-    transform: 'translateX(-100%)',
-  },
-};
-
-const defaultTransitions: Record<string, SlideTransition> = {
-  default: defaultTransition,
-  leaveOnly: {
-    enter: {
-      transform: 'translateX(0%)',
-    },
-    from: {},
-    leave: {
-      transform: 'translateX(-100%)',
-    },
-  },
-  none: {
-    enter: {},
-    from: {},
-    leave: {},
-  },
-  opacity: {
-    enter: {
-      opacity: 1,
-    },
-    from: {
-      opacity: 0,
-    },
-    leave: {
-      opacity: 1,
-    },
-  },
-  transformRight: {
-    enter: {
-      transform: 'translateX(0%)',
-    },
-    from: {
-      transform: 'translateX(100%)',
-    },
-    leave: {
-      transform: 'translateX(-100%)',
-    },
-  },
-};
-
+// Copy the Image component from ReMDX, because it is not exported
 function Image({
   src: source,
   ...props
@@ -84,14 +29,16 @@ async function slidesToComponent(module: Promise<ReMDXModule>) {
     Components,
     Container,
     Themes,
-    Transitions,
+    Transitions: slidesTransitions,
     default: slides,
   } = await module;
   return (
     <MDXProvider
       components={{
-        // ...DefaultComponents,
+        // Copy the default components (...DefaultComponents)
+        // from ReMDX, because they are not exported
         img: Image,
+
         ...Components,
       }}
     >
@@ -104,8 +51,8 @@ async function slidesToComponent(module: Promise<ReMDXModule>) {
             key={index}
             style={Themes?.[data?.theme] || Themes?.default}
             transition={
-              Transitions?.[data?.transition] ||
-              defaultTransitions[data?.transition] ||
+              slidesTransitions?.[data?.transition] ||
+              Transitions[data?.transition] ||
               undefined
             }
           >

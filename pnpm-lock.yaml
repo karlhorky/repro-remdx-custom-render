@@ -15,8 +15,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
       '@nkzw/remdx':
-        specifier: '*'
-        version: 0.13.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.14.0
+        version: 0.14.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -314,8 +314,8 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@nkzw/remdx@0.13.0':
-    resolution: {integrity: sha512-tXSoftg6bV2+hTnekfRxcOpEGQBKd+92DoPx0hNI/K3t8eAl5pxcQm0iJMzoKBVUR6xPSGz6cp+9MJHC9+W3pQ==}
+  '@nkzw/remdx@0.14.0':
+    resolution: {integrity: sha512-WjDtdJZWSOrLMI1WbHL2XlqoUDohmQMOQgd0amFOevk7SPMxdaLgegIrsJW755EWiAgVs/bkCHACboteUX5Qxw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1341,7 +1341,7 @@ snapshots:
       '@types/react': 18.3.3
       react: 18.3.1
 
-  '@nkzw/remdx@0.13.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@nkzw/remdx@0.14.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@mdx-js/react': 3.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
